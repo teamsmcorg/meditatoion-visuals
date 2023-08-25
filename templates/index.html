@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+    <title>Relaxation and Guided Imagery App</title>
+    
+</head>
+<body>
+    <div class="scroll-container">
+        <div class="controls">
+            <button id="start" class="control-button">Start Session</button>
+            <button id="pause" class="control-button">Pause</button>
+            <button id="resume" class="control-button">Resume</button>
+            <button id="stop" class="control-button">Stop Session</button>
+            <button id="play-music" class="control-button">Play Music</button>
+            <button id="stop-music" class="control-button">Stop Music</button>
+        </div>
+        <div class="background">
+            <div class="visualization">
+                <p id="instruction"></p>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

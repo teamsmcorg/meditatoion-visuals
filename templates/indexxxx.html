@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Combined Relaxation and Motivational App</title>
+    
+    <style>
+        /* Common styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.control-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 90px;
+}
+
+.control-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.visualization img {
+    max-width: 100%;
+    height: auto;
+}
+
+#instruction {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../aaj_ki_gif.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.visualization {
+    text-align: center;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Styles for the scrolling section */
+.slider {
+    height: 250px;
+    margin: auto;
+    position: relative;
+    width: 90%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.slide-track {
+    display: flex;
+    width: calc(250px*10);
+    animation: scroll 30s linear infinite;
+    animation: none; 
+    margin-top: 100px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px*5));
+    }
+}
+
+.slide {
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+    /* margin-top: 200px; */
+}
+
+img {
+    width: 100%;
+    height: auto;
+    transition: transform 1s;
+    margin-top: 80px;
+}
+
+.slider::before,
+.slider::after {
+    background: linear-gradient(to right, rgb(216, 171, 171) 0%, rgba(255, 255, 255, 0) 100%);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slider::after {
+    right: 0;
+    left: 0;
+    transform: rotateZ(180deg);
+}
+
+.news-ticker {
+    width: 100%;
+    overflow: hidden;
+    background-color: #496339;
+    color: #fff;
+}
+
+.ticker-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    white-space: nowrap;
+    animation: none;
+    animation: scroll 30s linear infinite;
+}
+
+.ticker-lister {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 60s linear infinite;
+}
+
+.ticker-item {
+    padding: 10px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.slider {
+    height: 250px;
+    margin: auto;
+    position: relative;
+    width: 90%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  
+  
+  .slide-track {
+    display: flex;
+    width: calc(250px*10);
+    animation: scroll 30s linear infinite;
+    animation: none; 
+  }
+  /* .slide-track:hover {
+    animation-play-state: paused;
+  } */
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-250px*5));
+    }
+  }
+  .slide {
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    perspective: 100px;
+  }
+  
+
+  img {
+    width: 100%; /* Set the desired width */
+    height: auto;
+    transition: transform 1s; /* Let the height adjust proportionally based on the width */
+  }
+  
+
+  /* img:hover {
+    transform: translateZ(20px);
+  } */
+
+  .slider::before,
+  .slider::after {
+    background: linear-gradient(to right, rgb(216, 171, 171) 0%,
+    rgba(255,255,255,0) 100%);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+  }
+
+  .slider::before {
+    left: 0;
+    top: 0;
+  }
+
+  .slider::after {
+    right: 0;
+    left: 0;
+    transform: rotateZ(180deg);
+  }
+  
+.news-ticker {
+  width: 100%;
+  overflow: hidden;
+  background-color: #496339;
+  color: #fff;
+}
+
+.ticker-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  white-space: nowrap;
+  animation: none;
+  animation: scroll 30s linear infinite;
+}
+.ticker-lister {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll 60s linear infinite;
+}
+
+.ticker-item {
+  padding: 10px;
+}
+
+@keyframes scroll {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="scroll-up-btn">
+        <i class="fas fa-angle-up"></i>
+    </div>
+    <nav class="navbar">
+        <div class="max-width">
+            <!-- <div class="logo"><a href="#">MENTALEASE<span></span></a></div> -->
+            <ul class="menu">
+                <!-- <li><a href="#home" class="menu-btn">Home</a></li>
+                <li><a href="#about" class="menu-btn">About Us</a></li> -->
+                <!-- <li><a href="#services" class="menu-btn">Impact</a></li>
+                <li><a href="#skills" class="menu-btn">Survey</a></li>
+                <li><a href="#teams" class="menu-btn">Helpline</a></li>
+                <li><a href="try.html" class="menu-btn">Services</a></li>
+                <li><a href="thought/index.html" class="menu-btn">ML</a></li>
+                <li><a href="http://localhost/loggg/index.php" class="menu-btn">Sign Up</a></li> -->
+                <!-- <li><a href="#courses" class="menu-btn">Reviews</a></li> -->
+
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- home section start -->
+    <section class="home" id="home">
+        <div class="scroll-container">
+            <div class="controls">
+                <button id="start" class="control-button">Start Session</button>
+                <button id="pause" class="control-button">Pause</button>
+                <button id="resume" class="control-button">Resume</button>
+                <button id="stop" class="control-button">Stop Session</button>
+                <button id="play-music" class="control-button">Play Music</button>
+                <button id="stop-music" class="control-button">Stop Music</button>
+            </div>
+            <div class="background">
+                <div class="visualization">
+                    <p id="instruction"></p>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+    <!-- <section>
+        <div class="chat-popup" id="chat-popup">
+            <div class="chat-header">
+                <div class="chat-title">MentalEase Assistant</div>
+                <div class="chat-close" id="chat-close">X</div>
+            </div>
+            <div class="chat-content" id="chat-content">
+                <div class="chat-message bot-message">Hello! How are you feeling? Is there something I can assist you with?</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type here.">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+        <div class="chat-icon" id="chat-icon">&#128172;</div>
+        <script src="script.js"></script>
+    </section> -->
+
+    <!-- about section start -->
+    <section class="about" id="about">
+        <div class="news-ticker">
+        
+            <ul class="ticker-list">
+                <li class="ticker-item">"Your mental health is a priority. Your happiness is an essential. Your self-care is a necessity."        
+                  "You have survived 100% of your worst days. You're stronger than you think."     
+                  "Recovery is not a race; it's a journey. Take one step at a time, and celebrate each victory, no matter how small."    
+                  "Be gentle with yourself. You're doing the best you can."</li>
+            </ul>
+        </div>
+        
+        <!-- <script src="script.js"></script> -->
+          <!-- <div class="slider"> -->
+            <div class="slide-track">
+              <div class="slide">
+                <img src="mi1.png" alt="Motivational Image 1">
+              </div>
+              <div class="slide">
+                <img src="mi2.png" alt="Motivational Image 2">
+                
+              </div>
+              <div class="slide">
+                <img src="mi3.png" alt="Motivational Image 3">
+                
+              </div>
+              <div class="slide">
+                <img src="mi4.png" alt="Motivational Image 4">
+                
+              </div>
+              <div class="slide">
+                <img src="mi5.png" alt="Motivational Image 5">
+                
+              </div>
+              <div class="slide">
+                <img src="mi6.png" alt="Motivational Image 6">
+                
+              </div>
+              <div class="slide">
+                <img src="mi7.jpg" alt="Motivational Image 7">
+                
+              </div>
+              <div class="slide">
+                <img src="mi8.jpg" alt="Motivational Image 8">
+                
+              </div>
+              <div class="slide">
+                <img src="mi9.jpg" alt="Motivational Image 9">
+                
+              </div>
+              <div class="slide">
+                <img src="mi10.jpg" alt="Motivational Image 10">
+                
+              </div>
+            </div>
+    </section>
+
+    <!-- services section start -->
+    <!-- <section class="services" id="services">
+        <div class="max-width">
+          <section class="video-section">
+            <h2 class="title">Stress is Dangerous</h2>
+            <div class="container">
+              <div class="columns">
+                <div class="text-content">
+                  
+                  <p>
+                    Physiological Effects: Chronic stress triggers the body's "fight or flight" response, releasing stress hormones such as cortisol and adrenaline. These hormones are useful in short-term situations, but prolonged exposure to them can lead to increased heart rate, elevated blood pressure, and a weakened immune system. Over time, this can contribute to the development of cardiovascular diseases, hypertension, and a compromised ability to fight off infections
+                    <br>
+                    <br>
+                    Mental Health Disorders: Prolonged stress is a significant risk factor for the development of mental health disorders such as anxiety and depression. It can alter brain chemistry and impact areas of the brain responsible for regulating mood, leading to persistent negative emotions and emotional instability.
+                  </p>
+                </div>
+                <div class="video-content">
+                   Replace "YOUR_YOUTUBE_VIDEO_EMBED_CODE" with the actual YouTube video embed code -->
+                 
+            <!-- <iframe width="560"height=315 src="https://www.youtube.com/embed/DulNz2CkoHI" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section> -->
+<!-- </html>  -->
+<script>
+    window.addEventListener('load', function() {
+      // Start the animations after the page has loaded
+      document.querySelector('.slide-track').style.animation = 'scroll 30s linear infinite';
+      document.querySelector('.ticker-list').style.animation = 'scroll 30s linear infinite';
+    });
+  </script>
+</body>
+</html>
