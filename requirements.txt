@@ -1,0 +1,6 @@
+pygame
+gtts
+os
+time
+flask
+datetime
