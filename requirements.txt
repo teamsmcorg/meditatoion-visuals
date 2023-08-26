@@ -1,5 +1,5 @@
 pygame
 gtts
-time
+python-time
 flask
 datetime
