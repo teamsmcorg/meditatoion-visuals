@@ -1,6 +1,5 @@
 import pygame
 from gtts import gTTS
-import os
 import time
 from flask import Flask, render_template, request
 from datetime import datetime
@@ -86,7 +85,7 @@ class GuidedImageryApp:
             time.sleep(0.1)
 
         tts_sound.stop()
-        os.remove(fs)
+        # os.remove(fs)
         fs = None
 
 @app.route('/')
